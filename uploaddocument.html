@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Documents</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        #document-list {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        .uploaded-document {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .uploaded-document .document-name {
+            font-weight: bold;
+        }
+        .uploaded-document .upload-date {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Uploaded Documents</h1>
+        <div id="document-list">
+            <!-- Uploaded documents will be displayed here -->
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+    <script>
+        // Initialize Firebase with your configuration
+        const firebaseConfig = {
+           const firebaseConfig = {
+  apiKey: "AIzaSyAzh0qapVg-vuD5kPGTSUwZp6n9ds2ksd4",
+  authDomain: "e-students-764ac.firebaseapp.com",
+  projectId: "e-students-764ac",
+  storageBucket: "e-students-764ac.appspot.com",
+  messagingSenderId: "458914599582",
+  appId: "1:458914599582:web:e3ec37a1c12c97217d618f"
+};
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to Firebase storage
+        const storage = firebase.storage();
+
+        const documentList = document.getElementById('document-list');
+
+        function displayUploadedDocuments() {
+            documentList.innerHTML = ''; // Clear the list
+
+            const storageRef = storage.ref('https://console.firebase.google.com/project/e-students-764ac/storage/e-students-764ac.appspot.com/files/~2FDocument%20Upload/'); // Use the correct path
+            storageRef.listAll().then((result) => {
+                result.items.forEach((item) => {
+                    item.getMetadata().then((metadata) => {
+                        const documentItem = document.createElement('div');
+                        documentItem.classList.add('uploaded-document');
+                        documentItem.innerHTML = `
+                            <div class="document-name">${item.name}</div>
+                            <div class="upload-date">${new Date(metadata.timeCreated).toLocaleDateString()}</div>
+                            <a href="${metadata.fullPath}" target="_blank">View Document</a>
+                        `;
+                        documentList.appendChild(documentItem);
+                    });
+                });
+            });
+        }
+
+        // Call displayUploadedDocuments initially to populate the list
+        displayUploadedDocuments();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+
+<script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyAzh0qapVg-vuD5kPGTSUwZp6n9ds2ksd4",
+  authDomain: "e-students-764ac.firebaseapp.com",
+  databaseURL: "https://e-students-764ac-default-rtdb.firebaseio.com",
+  projectId: "e-students-764ac",
+  storageBucket: "e-students-764ac.appspot.com",
+  messagingSenderId: "458914599582",
+  appId: "1:458914599582:web:e3ec37a1c12c97217d618f"
+};
+</script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bursaries Portal</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Top and Bottom Colored Containers */
+        .top-container {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .bottom-container {
+            background-color: #28A745;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Card Colors */
+        .card {
+            background-color: #F8F9FA;
+            border: 1px solid #E1E1E1;
+        }
+
+        .modal-content {
+            background-color: #F8F9FA;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-container">
+    <div class="container">
+        <h1 class="text-center">Bursaries Portal</h1>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <!-- Scholarship Cards -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gauteng Department of e-Government</h5>
+                    <p class="card-text">The Gauteng Department of e-Government is responsible for rolling out network infrastructure that will connect government facilities, improve service delivery, modernise </p>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#modal1">Read More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Absa Fellowship Programme</h5>
+                    <p class="card-text">Absa Group Limited is a financial services group located in South Africa and listed on the JSE.</p>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#modal2">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Add a New Bursary</h5>
+      <form id="bursaryForm">
+        <div class="form-group">
+          <label for="bursaryTitle">Title</label>
+          <input type="text" class="form-control" id="bursaryTitle" placeholder="Bursary Title" required>
+        </div>
+        <div class="form-group">
+          <label for="bursaryDescription">Description</label>
+          <textarea class="form-control" id="bursaryDescription" rows="3" placeholder="Bursary Description" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Bursary</button>
+      </form>
+    </div>
+  </div>
+</div>
+        <!-- Add more scholarship cards here -->
+
+    </div>
+</div>
+
+<div class="bottom-container">
+    <div class="container">
+        <p class="text-center">Apply for these Bursaries to support your education.</p>
+    </div>
+</div>
+
+<!-- Modals for Scholarship Details -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal1Label">Gauteng Department of e-Government Bursary</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>    <h1>Gauteng Department of e-Government Bursary South Africa 2022 – 2023</h1>
+    
+    <h2>About the Bursary Provider – Gauteng Department of e-Government</h2>
+    <p>The Gauteng Department of e-Government is responsible for rolling out network infrastructure that will connect government facilities, improve service delivery, modernize the public service, and stimulate the province’s knowledge-based economy, within the Gauteng City Region (GCR).</p>
+    
+    <h2>About the Gauteng Department of e-Government Bursary Program – Fields Covered</h2>
+    <p>The Gauteng Department of e-Government is inviting students to apply for their bursary program, for the 2023 academic year.</p>
+    
+    <p>Bursaries will be awarded to students residing within the Gauteng province, for studies within these fields:</p>
+    
+    <ul>
+        <li>Computer Engineering</li>
+        <li>Computer Science</li>
+        <!-- Add more fields here -->
+    </ul>
+    
+    <h2>Related Bursaries</h2>
+    <p>View our other Government Bursaries and Scholarships <a href="link-to-government-bursaries" target="_blank"><strong>here</strong></a>.</p>
+    <p>View our other Computer and IT Bursaries and Scholarships <a href="link-to-computer-it-bursaries" target="_blank"><strong>here</strong></a>.</p>
+    <p>View our other Bursaries closing in November 2022 <a href="link-to-november-bursaries" target="_blank"><strong>here</strong></a>.</p>
+    
+    <h2>More About the Department of Gauteng e-Government Bursary Program – Expenses Covered</h2>
+    <p>The bursary will provide cover for the following expenses: registration fees, tuition fees, prescribed books, and/or study materials.</p>
+    
+    <p><a href="https://www.zabursaries.co.za" target="_blank">www.zabursaries.co.za</a> is committed to keeping you up to date with the latest bursary opportunities, and this article covers all details about the Gauteng Department of e-Government Bursary.</p>
+    
+    <h2>Eligibility Requirements for the Gauteng Department of e-Government Bursary</h2>
+    <p>Applicants must satisfy the following minimum entry criteria before applying (please note that failure to satisfy all the requirements will lead to your application not being considered):</p>
+    
+    <ul>
+        <li>You must be a South African citizen</li>
+        <li>You must be between 18 and 35 years old</li>
+        <!-- Add more requirements here -->
+    </ul>
+    
+    <h2>How to Apply for the Gauteng Department of e-Government Bursary</h2>
+    <p>Download and complete the Gauteng Department of e-Government Bursary Application Form 2023 <a href="link-to-application-form" target="_blank"><strong>(.pdf)</strong></a></p>
+    
+    <p>Enter “<strong>www.zabursaries.co.za</strong>” in the field asking how you heard about the Gauteng Department of e-Government Bursary.</p>
+    
+    <p>Submit clear copies of the following supporting documentation along with your completed application form (the submission of these documents is compulsory – if any items are missing, your application may be disqualified):</p>
+    
+    <ul>
+        <li>ID document/ ID card (certified copy)</li>
+        <li>Matric mid-year results, if currently in Matric (certified copy)</li>
+        <!-- Add more supporting documents here -->
+    </ul>
+    
+    <h2>Closing Date for the Gauteng Department of e-Government Bursary</h2>
+    <p>28 November 2022.</p>
+    
+    <p>(Applications submitted after this date will not be accepted – please apply before the closing date to ensure your application is considered.)</p>
+    
+    <h2>Contact the Bursary Provider</h2>
+    <p>For any queries related to this bursary program, please contact the Gauteng Department of e-Government directly:</p>
+    
+    <p>Contact person 1: Refiloe Ntsoelikane (Tel: 011 689 6054 / Email: <a href="mailto:Refiloe.Ntsoelikane@gauteng.gov.za">Refiloe.Ntsoelikane@gauteng.gov.za</a>)</p>
+    <p>Contact person 2: Fezisa Mfo (Tel: 011 689 6074 / Email: <a href="mailto:Fezisa.Mfo@gauteng.gov.za">Fezisa.Mfo@gauteng.gov.za</a>)</p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal2Label">Absa Fellowship Programme</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>    <h1>About the Programme Provider – Absa</h1>
+    <p>Absa Group Limited is a financial services group located in South Africa and listed on the JSE. The Group is a major stakeholder and owner of banks in South Africa, as well as in Botswana, Ghana, Kenya, Mauritius, Mozambique, Seychelles, Tanzania, Uganda, and Zambia. They are also located in Namibia, Nigeria, the United States, and the United Kingdom.</p>
+    
+    <p>The Group is one of the biggest diversified financial services groups on the African continent and they offer clients the following services: personal banking, business banking, corporate banking, investment banking, credit cards, bancassurance, wealth and investment management.</p>
+    
+    <h2>About the Absa Fellowship Programme – Fields Covered</h2>
+    <p>Absa is inviting students to apply for their Fellowship Programme, for the 2023 academic year. The Absa Fellowship Programme is so much more than a regular scholarship or bursary programme. It is a leadership development programme, that provides candidates with financial support towards their studies, as well as the chance to participate in a specially curated leadership development programme created by Absa.</p>
+    
+    <p>The programme is open to learners from selected African countries (South Africa, Botswana, Zambia, Kenya, Uganda, Ghana, Mozambique, Tanzania, Mauritius, Seychelles), for undergraduate degree studies in the following fields:</p>
+    
+    <h3>Mathematics:</h3>
+    <ul>
+        <li>Actuarial and Financial Mathematics</li>
+        <li>Actuarial Science</li>
+        <!-- Add more fields here -->
+    </ul>
+    
+    <h3>Technology:</h3>
+    <ul>
+        <li>Business Computing</li>
+        <li>Computer Engineering</li>
+        <!-- Add more fields here -->
+    </ul>
+    
+    <h2>More About the Absa Fellowship Programme – Expenses Covered & Other Benefits</h2>
+    <p>The fellowship will provide cover for the following study-related expenses: full tuition fees, textbooks, educational equipment, laptop, accommodation in university residence or private, meal allowance, monthly stipend, monthly data allowance, student medical aid cover.</p>
+    
+    <p>Recipients will also receive the following benefits: leadership programme, travel if required, learner modules and guides, online lectures and assessments, emotional wellness check-in sessions, and academic tutoring and mentoring.</p>
+    
+    <p><a href="https://www.zabursaries.co.za" target="_blank">www.zabursaries.co.za</a> is committed to keeping you up to date with the latest bursary opportunities, and this article covers all details about the Absa Fellowship.</p>
+    
+    <h2>Eligibility Requirements for the Absa Fellowship</h2>
+    <p>Applicants must satisfy the following minimum entry criteria before applying (please note that failure to satisfy all the requirements will lead to your application not being considered):</p>
+    
+    <ul>
+        <li>You must be a citizen of one of these African countries: South Africa, Botswana, Zambia, Kenya, Uganda, Ghana, Mozambique, Tanzania, Mauritius, Seychelles</li>
+        <li>You must be between 18 and 25 years old</li>
+        <li>You must have completed Matric (or equivalent) with a minimum overall average of 65%</li>
+        <li>You must be entering your 1st year of study in 2023</li>
+        <li>You must intend on studying towards an undergraduate degree qualification, within one of the fields of study listed above</li>
+        <li>You must have been provisionally accepted or accepted to study at one of the 26 public universities in South Africa: University of Johannesburg, University of KwaZulu-Natal, Nelson Mandela Metropolitan University, University of the Witwatersrand, University of Zululand, University of Fort Hare, Vaal University of Technology, Mangosuthu University of Technology, Rhodes University, University of Pretoria, Durban University of Technology, Walter Sisulu University, Tshwane University of Technology, University of Cape Town, University of Free State, Sefako Makgatho Health & Sciences University, University of the Western Cape, Central University of Technology, University of Limpopo, Cape Peninsula University of Technology, Sol Plaatje University, University of Venda, Stellenbosch University, North-West University, University of Mpumalanga, University of South Africa</li>
+        <li>You must be a leader</li>
+        <li>You must be a catalyst for change</li>
+        <li>You must be a humble and passionate</li>
+        <li>You must be a brave and ready to embrace possibility</li>
+        <li>You must be a ethical and socially conscious</li>
+    </ul>
+    
+    <h2>How to Apply for the Absa Fellowship</h2>
+    <p>Applications must be submitted online at: <a href="link-to-application-form" target="_blank">Absa Fellowship Programme Application 2023</a></p>
+    
+    <p>Enter “<strong>www.zabursaries.co.za</strong>” in the field asking how you heard about the Absa Fellowship Programme.</p>
+    
+    <p>Applicants should download and read the <a href="link-to-faq" target="_blank"><strong>Absa Fellowship FAQ’s (.pdf)</strong></a> before applying.</p>
+    
+    <p>Submit clear copies of the following supporting documentation along with your completed application form (the submission of these documents is compulsory – if any items are missing, your application may be disqualified):</p>
+    
+    <ul>
+        <li>ID document (certified copy)</li>
+        <li>Passport/ ID document if not an SA citizen (certified copy)</li>
+        <li>Matric certificate (certified copy)</li>
+        <!-- Add more supporting documents here -->
+    </ul>
+    
+    <h2>Closing Date for the Absa Fellowship</h2>
+    <p>5 November 2023.</p>
+    
+    <p>(Applications submitted after this date will not be accepted – please apply before the closing date to ensure your application is considered.)</p>
+    
+    <h2>Contact the Fellowship Provider</h2>
+    <p>For any queries related to this programme, please contact Absa directly:</p>
+    
+    <p>Head Office</p>
+    <p>Tel: 011 350 4000</p>
+    
+    <p>Please be sure to read the <a href="link-to-faq" target="_blank"><strong>Frequently Asked Questions and Answers</strong></a> before submitting any queries.</p>
+    
+    <p>Please do NOT contact Absa if this fellowship has already closed. View our other bursaries open for application here: <a href="https://www.zabursaries.co.za/bursary-news/" target="_blank">https://www.zabursaries.co.za/bursary-news/</a></p>
+    
+    <p>This bursary listing was last updated in October 2023.</p>
+    
+    <p>SA Bursaries wishes you the best of luck with your application! Please remember to <strong>SHARE</strong> this page with anyone you know who may be in need of bursary funding.</p>
+            </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  // Reference to the Firebase database
+  var database = firebase.database();
+
+  // Function to save bursary data to Firebase
+  function saveBursary(title, description) {
+    var newBursaryRef = database.ref('bursaries').push();
+    newBursaryRef.set({
+      title: title,
+      description: description
+    });
+  }
+
+  // Event listener for the bursary form submission
+  document.getElementById('bursaryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bursaryTitle = document.getElementById('bursaryTitle').value;
+    var bursaryDescription = document.getElementById('bursaryDescription').value;
+
+    saveBursary(bursaryTitle, bursaryDescription);
+
+    // Clear form inputs
+    document.getElementById('bursaryTitle').value = '';
+    document.getElementById('bursaryDescription').value = '';
+  });
+
+    function saveBursary(title, description) {
+  var newBursaryRef = database.ref('bursaries').push();
+  newBursaryRef.set({
+    title: title,
+    description: description
+  }, function (error) {
+    if (error) {
+      console.error('Error adding bursary:', error);
+    } else {
+      console.log('Bursary added successfully');
+    }
+  });
+}
+
+</script>
+
+<!-- Include Bootstrap and jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+</body>
+</html>
